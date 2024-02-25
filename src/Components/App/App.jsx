@@ -4,7 +4,6 @@ import listOfContacts from "../../../ContactList.json";
 import ContactList from "../ContactList/ContactList";
 import SearchBox from "../SearchBox/SearchBox";
 import ContactForm from "../ContactForm/ContactForm";
-// import { date } from "yup";
 
 const App = () => {
   const [contacts, setContacts] = useState(() => {
@@ -12,15 +11,12 @@ const App = () => {
     if (savedObject !== null) {
       return JSON.parse(savedObject);
     }
-    console.log(JSON.parse(savedObject));
-    console.log(listOfContacts);
     return listOfContacts;
   });
   const [filter, setFilter] = useState("");
 
   const adContact = (newContact) => {
     setContacts((prevContacts) => {
-      console.log(prevContacts);
       return [...prevContacts, newContact];
     });
   };
