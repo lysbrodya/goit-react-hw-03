@@ -1,0 +1,13 @@
+.list {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.contact {
+  display: flex;
+  min-width: 200px;
+  border: 2px solid black;
+  border-radius: 3px;
+  padding: 10px;
+  align-items: center;
+}

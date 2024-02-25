@@ -1,5 +1,5 @@
-import "./App.css";
-import { useState } from "react";
+import "./App.module.css";
+import { useState, useEffect } from "react";
 import listOfContacts from "../../../ContactList.json";
 import ContactList from "../ContactList/ContactList";
 import SearchBox from "../SearchBox/SearchBox";
@@ -7,7 +7,15 @@ import ContactForm from "../ContactForm/ContactForm";
 // import { date } from "yup";
 
 const App = () => {
-  const [contacts, setContacts] = useState(listOfContacts);
+  const [contacts, setContacts] = useState(() => {
+    const savedObject = window.localStorage.getItem("saved-feedback");
+    if (savedObject !== null) {
+      return JSON.parse(savedObject);
+    }
+    console.log(JSON.parse(savedObject));
+    console.log(listOfContacts);
+    return listOfContacts;
+  });
   const [filter, setFilter] = useState("");
 
   const adContact = (newContact) => {
@@ -16,6 +24,13 @@ const App = () => {
       return [...prevContacts, newContact];
     });
   };
+
+  useEffect(() => {
+    window.localStorage.setItem(
+      "saved-feedback",
+      JSON.stringify([...contacts])
+    );
+  }, [contacts]);
 
   const delContact = (contactId) => {
     setContacts((prevContacts) => {

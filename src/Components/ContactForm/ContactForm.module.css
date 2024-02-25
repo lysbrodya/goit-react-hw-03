@@ -1,0 +1,20 @@
+.form {
+  display: inline-flex;
+  flex-direction: column;
+  width: 300px;
+  border: 2px solid black;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+.button {
+  margin: auto;
+  margin-top: 10px;
+  width: fit-content;
+}
+
+.erm {
+  display: flex;
+  color: red;
+  font-size: small;
+}

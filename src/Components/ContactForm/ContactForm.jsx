@@ -3,6 +3,7 @@ import { useId } from "react";
 import { nanoid } from "nanoid";
 import * as Yup from "yup";
 import { ErrorMessage } from "formik";
+import css from "./ContactForm.module.css";
 
 export default function ContactForm({ onAdd }) {
   const phoneId = useId();
@@ -35,21 +36,17 @@ export default function ContactForm({ onAdd }) {
       }}
       validationSchema={FeedbackSchema}
     >
-      <Form>
-        <div>
-          {" "}
-          <label htmlFor={nameId}>Name</label>
-          <Field type="text" name="name" id={nameId} />
-          <ErrorMessage name="name" as="span" />
-        </div>
+      <Form className={css.form}>
+        <label htmlFor={nameId}>Name</label>
+        <Field type="text" name="name" id={nameId} />
+        <ErrorMessage name="name" component="span" className={css.erm} />
 
-        <div>
-          {" "}
-          <label htmlFor={phoneId}>Number</label>
-          <Field type="text" name="number" id={phoneId} />
-          <ErrorMessage name="number" as="span" />
-        </div>
-        <button type="submit">Submit</button>
+        <label htmlFor={phoneId}>Number</label>
+        <Field type="text" name="number" id={phoneId} />
+        <ErrorMessage name="number" component="span" className={css.erm} />
+        <button type="submit" className={css.button}>
+          Add contact
+        </button>
       </Form>
     </Formik>
   );
