@@ -15,7 +15,7 @@ const App = () => {
   });
   const [filter, setFilter] = useState("");
 
-  const adContact = (newContact) => {
+  const addContact = (newContact) => {
     setContacts((prevContacts) => {
       return [...prevContacts, newContact];
     });
@@ -40,7 +40,7 @@ const App = () => {
   return (
     <div>
       <h1>Phonebook</h1>
-      <ContactForm onAdd={adContact} />
+      <ContactForm onAdd={addContact} />
       <SearchBox value={filter} onFilter={setFilter} />
       <ContactList data={filteredContacts} onDelete={delContact} />
     </div>
